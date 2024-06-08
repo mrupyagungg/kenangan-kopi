@@ -268,6 +268,107 @@ body {
 .menu .row .menu-card-price {
     margin-top: 1.5rem;
 }
+/* product */
+.product .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding: 0 2rem;
+}
+
+.product .product-card {
+    text-align: center;
+    border: 1px solid #000000;
+    padding: 2rem;
+    background-color: #fcfcfcbd;
+    border-radius: 10px;
+    color: #000;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.313);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product .product-card img {
+    width: 75%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.product .product-card img:hover {
+    transform: scale(1.05);
+}
+
+.product .product-card .product-card-title {
+    margin-top: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.product .product-price {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #000000;
+}
+.product .product-price span {
+    text-decoration: line-through;
+    font-weight: bold !important;
+    font-size: 1rem;
+}
+
+.product .product-icon {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.product .product-icon i {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.product .product-star {
+    font-size: 1.7rem;
+    padding: 0.8rem;
+    color: var(--primary);
+}
+
+.product .product-star .star {
+    fill: var(--primary);
+}
+
+.product .product-icon span {
+    font-size: 1.4rem;
+    font-weight: 200;
+}
+
+.product .product-icon a {
+    width: 4rem;
+    height: 4rem;
+    color: #0b0b0b;
+    margin: 0.5rem;
+    border: 2px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.product .product-icon a:hover {
+    background-color: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
 /* contact */
 .contact .row {
     display: flex;
