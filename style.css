@@ -19,7 +19,6 @@ body {
     color: white;
     min-height: auto;
 }
-
 /* navbar */
 .navbar {
     display: flex;
@@ -32,7 +31,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: index 999;
+    z-index: 999;
 }
 
 .navbar .navbar-logo {
@@ -57,7 +56,7 @@ body {
     color: var(--primary);
 }
 
-.navbar .navbar-nava::after {
+.navbar .navbar-nav a::after {
     content: '';
     display: block;
     padding-bottom: 0.5rem;
@@ -67,7 +66,7 @@ body {
 }
 
 .navbar .navbar-nav a:hover::after {
-    transform: scaleX(0.5);
+    transform: scaleX(1);
 }
 
 .navbar .navbar-extra a {
@@ -81,6 +80,43 @@ body {
 
 #hamburger-menu {
     display: none;
+}
+
+/* nav search */
+.navbar .search-form {
+    position: absolute;
+    top: 100%;
+    right: 6%;
+    background-color: #fff;
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.navbar .search-form.active {
+    transform: scaleY(1);
+}
+
+.navbar .search-form input {
+    height: 100%;
+    width: 100%;
+    font-size: 1.6rem;
+    color: #000;
+    padding: 1rem;
+    border: none;
+    outline: none;
+}
+
+.navbar .search-form label {
+    cursor: pointer;
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    color: #000;
 }
 
 /* hero secetion*/
