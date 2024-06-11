@@ -119,6 +119,57 @@ body {
     color: #000;
 }
 
+.shopping-cart {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.cart-items h2 {
+    color: #000;
+}
+.shopping-cart .card {
+    font-size: 16px;
+    color: #000; /* Pastikan teks memiliki warna yang terlihat */
+    margin-top: 10px; /* Tambahkan margin jika diperlukan */
+}
+
+.card img {
+    max-width: 50px; /* Mengatur lebar maksimum gambar */
+    max-height: 50px; /* Mengatur tinggi maksimum gambar */
+    margin-right: 10px; /* Menambahkan margin kanan untuk memberikan ruang antara gambar dan teks */
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-items li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-total {
+    margin-top: 10px;
+}
+
+.checkout-button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
 /* hero secetion*/
 .hero {
     min-height: 100vh;
@@ -182,13 +233,15 @@ body {
 /* about */
 .about,
 .menu,
-.contact {
+.contact,
+.product {
     padding: 9rem 7% 1.4rem;
 }
 
 .about h2,
 .menu h2,
-.contact h2 {
+.contact h2,
+.product h2 {
     text-align: center;
     font-size: 2.6rem;
     margin-bottom: 3rem;
@@ -196,7 +249,8 @@ body {
 
 .about h2 span,
 .menu h2 span,
-.contact h2 span {
+.contact h2 span,
+.product h2 span {
     color: #b6895b;
 }
 
@@ -235,7 +289,8 @@ body {
     margin-bottom: 1.5rem;
 }
 .menu p,
-.contact p {
+.contact p,
+.product p {
     text-align: center;
     max-width: 30rem;
     margin: auto;
@@ -277,14 +332,20 @@ body {
     padding: 0 2rem;
 }
 
+.product h3 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+}
+
 .product .product-card {
     text-align: center;
-    border: 1px solid #000000;
+    border: 1px solid #000;
     padding: 2rem;
-    background-color: #fcfcfcbd;
+    background-color: rgba(252, 252, 252, 0.74);
     border-radius: 10px;
     color: #000;
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.313);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.31);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -315,8 +376,9 @@ body {
     margin-top: 1rem;
     font-size: 1.4rem;
     font-weight: bold;
-    color: #000000;
+    color: #000;
 }
+
 .product .product-price span {
     text-decoration: line-through;
     font-weight: bold !important;
