@@ -130,24 +130,33 @@ body {
     width: 300px;
 }
 
-.cart-items h2 {
+.shopping-cart h2 {
     color: #000;
+    font-size: 2rem;
+    text-align: center;
 }
 .shopping-cart .card {
-    font-size: 16px;
+    font-size: 20px;
     color: #000; /* Pastikan teks memiliki warna yang terlihat */
     margin-top: 10px; /* Tambahkan margin jika diperlukan */
 }
 
 .card img {
-    max-width: 50px; /* Mengatur lebar maksimum gambar */
-    max-height: 50px; /* Mengatur tinggi maksimum gambar */
+    max-width: 100px; /* Mengatur lebar maksimum gambar */
+    max-height: 100px; /* Mengatur tinggi maksimum gambar */
     margin-right: 10px; /* Menambahkan margin kanan untuk memberikan ruang antara gambar dan teks */
 }
 
+.cart-total {
+    margin-top: 10px;
+    color: #000;
+    font-size: 1.3rem;
+    text-align: end;
+}
 .cart-items {
     list-style: none;
     padding: 0;
+    border-bottom: 1px solid #ddd; /* Divider line */
 }
 
 .cart-items li {
@@ -169,7 +178,19 @@ body {
     width: 100%;
     margin-top: 10px;
 }
+.checkout-button {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
 
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff0000;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 /* hero secetion*/
 .hero {
     min-height: 100vh;
@@ -297,13 +318,18 @@ body {
     font-weight: 200;
     line-height: 1.6rem;
 }
+
 .menu .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(300px, 1fr)
+    ); /* Setiap baris akan menampung maksimum 3 gambar */
     gap: 16px;
     margin-top: 5rem;
+    justify-items: center; /* Pusatkan gambar di dalam kotak */
 }
+
 .menu .row .menu-card img {
     border-radius: 50%;
     width: 70%;
@@ -533,6 +559,104 @@ footer .credit a {
     font-weight: 700;
 }
 
+/* Modal box */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-container {
+    position: relative;
+    background-color: #fff;
+    color: #333;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: animateModal 0.8s; /* Menambahkan animasi pada modal-container */
+    animation-fill-mode: forwards; /* Untuk menjaga elemen di posisi terakhir setelah animasi selesai */
+}
+
+/* modal animasi */
+@keyframes animateModal {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-container .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.modal-container .modal-content {
+    display: flex;
+    align-items: center;
+}
+
+.modal-container img {
+    max-width: 45%;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.modal-container .prodact-content {
+    flex: 1;
+}
+
+.modal-container h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.modal-container .product-star {
+    /* color: #f8ce0b; */
+    margin-bottom: 10px;
+}
+
+.modal-container .product-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-container p {
+    margin-bottom: 20px;
+}
+
+.modal-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 1rem;
+    background-color: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.modal-container a:hover {
+    background-color: #e0b90b;
+}
+
 /* medaia query */
 
 /* laptop */
@@ -598,6 +722,10 @@ footer .credit a {
         object-position: center;
     }
 
+    .menu .row {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
     .menu p {
         font-size: 1.2rem;
     }
@@ -606,11 +734,15 @@ footer .credit a {
         flex: 1 1 calc(50% - 32px); /* 2 kolom pada tablet */
         max-width: calc(50% - 32px);
     }
+
+    .modal-content {
+        flex-wrap: wrap;
+    }
 }
 
 /* medai querry */
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .contact .row {
         flex-direction: column;
         padding: 1rem;
@@ -624,6 +756,9 @@ footer .credit a {
 
     .contact .row form {
         padding: 1rem;
+    }
+    .menu .row {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
 

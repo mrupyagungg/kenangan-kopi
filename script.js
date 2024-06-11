@@ -104,3 +104,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Modal box
+const itemDetailModals = document.querySelectorAll('#item-detail-modal');
+const itemDetailButtons = document.querySelectorAll('.item-detail-button');
+const closeModalButtons = document.querySelectorAll('.close');
+
+itemDetailButtons.forEach((btn, index) => {
+    btn.onclick = (e) => {
+        // Mengubah tampilan modal yang sesuai dengan tombol ditekan menjadi 'flex'
+        itemDetailModals[index].style.display = 'flex';
+        e.preventDefault();
+    };
+});
+
+closeModalButtons.forEach((btn, index) => {
+    btn.onclick = () => {
+        // Mengubah tampilan modal yang sesuai dengan tombol close ditekan menjadi 'none'
+        itemDetailModals[index].style.display = 'none';
+    };
+});
+
+// Menambahkan event listener untuk menutup modal saat area di luar modal ditekan
+window.onclick = (event) => {
+    itemDetailModals.forEach((modal) => {
+        if (event.target === modal) {
+            // Menutup modal hanya jika yang diklik adalah area di luar modal
+            modal.style.display = 'none';
+        }
+    });
+};
+
+// Mendapatkan elemen tombol close
+const closeModalButton = document.querySelector('.close');
+
+// Menambahkan event listener ke tombol close
+closeModalButton.addEventListener('click', (e) => {
+    e.preventDefault(); // Mencegah navigasi ke halaman #
+    itemDetailModals.style.display = 'none'; // Menutup modal
+});
+
+// Menambahkan event listener untuk menutup modal saat area di luar modal ditekan
+window.onclick = (event) => {
+    if (event.target === itemDetailModals) {
+        // Menutup modal hanya jika yang diklik adalah area di luar modal
+        itemDetailModals.style.display = 'none';
+    }
+};

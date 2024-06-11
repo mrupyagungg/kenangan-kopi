@@ -30,43 +30,58 @@
             </div>
             <div class="navbar-extra">
                 <a href="#" id="search-button"><i data-feather="search"></i></a>
-                <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+                <a href="#" id="shopping-cart"
+                    ><i data-feather="shopping-cart"></i
+                ></a>
                 <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
             </div>
-        
+
             <!-- search form -->
             <div class="search-form">
-                <input type="search" id="search-box" placeholder="search here...">
+                <input
+                    type="search"
+                    id="search-box"
+                    placeholder="search here..."
+                />
                 <label for="search-box"><i data-feather="search"></i></label>
             </div>
 
+            <!-- shopping-cart -->
             <div class="shopping-cart">
+                <h2>Your Cart</h2>
                 <ul class="cart-items">
-                    <h2>Your Cart</h2>
-                    <div class="card">
+                    <li class="card">
                         <img src="img/dalgona.jpg" alt="item" />
                         <div class="item-details">
                             <h4>Kopi Susu</h4>
                             <p>Rp 10.000</p>
                         </div>
-                    </div>
+                        <button class="remove-item">
+                            <i data-feather="trash-2"></i>
+                        </button>
+                    </li>
                 </ul>
+                <hr />
                 <ul class="cart-items">
-                    <div class="card">
+                    <li class="card">
                         <img src="img/dalgona.jpg" alt="item" />
                         <div class="item-details">
                             <h4>Kopi Susu</h4>
                             <p>Rp 10.000</p>
                         </div>
-                    </div>
+                        <button class="remove-item">
+                            <i data-feather="trash-2"></i>
+                        </button>
+                    </li>
                 </ul>
                 <div class="cart-total">
                     <strong>Total:</strong> $<span id="cart-total">0.00</span>
                 </div>
                 <button class="checkout-button">Checkout</button>
             </div>
-        </nav>        
+        </nav>
         <!-- navbar end -->
+
         <!-- hero section -->
         <section class="hero" id="home">
             <main class="content">
@@ -78,7 +93,7 @@
                 <a href="#" class="cta">Buy Now</a>
             </main>
         </section>
-        <!-- hero section -->
+
         <!-- about -->
         <section id="about" class="about">
             <h2>Tentang <span>Kami</span></h2>
@@ -105,6 +120,7 @@
             </div>
         </section>
 
+        <!-- menu -->
         <section id="menu" class="menu">
             <br /><br />
             <h2>Menu <span>Kami</span></h2>
@@ -144,20 +160,26 @@
 
         <!-- product -->
         <section class="product" id="product">
-            <h2> <span>Prodak</span> Unggluan Kami</h2>
+            <h2><span>Prodak</span> Unggluan Kami</h2>
             <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique numquam, architecto, ipsa dignissimos aliquam magni nemo reprehenderit praesentium assumenda eius vero unde, maxime at voluptatibus sed iure? Libero, expedita porro!
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Similique numquam, architecto, ipsa dignissimos aliquam magni
+                nemo reprehenderit praesentium assumenda eius vero unde, maxime
+                at voluptatibus sed iure? Libero, expedita porro!
             </p>
             <div class="row">
+                <!-- Example product card with item-detail-button -->
                 <div class="product-card">
                     <div class="product-icon">
-                        <a href=""><i data-feather="shopping-cart"></i></a>
-                        <a href=""><i data-feather="eye"></i></a>
+                        <a href="#"><i data-feather="shopping-cart"></i></a>
+                        <a href="#" class="item-detail-button"
+                            ><i data-feather="eye"></i
+                        ></a>
                     </div>
                     <div class="product-image">
-                        <img src="img/dalgona.jpg" alt="">
+                        <img src="img/dalgona.jpg" alt="" />
                     </div>
-                    <div class="prodact-content">
+                    <div class="product-content">
                         <h3>Dalgona</h3>
                         <div class="product-star">
                             <i data-feather="star" class="star"></i>
@@ -169,35 +191,49 @@
                         <div class="product-price">IDR 32K</div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-icon">
-                        <a href=""><i data-feather="shopping-cart"></i></a>
-                        <a href=""><i data-feather="eye"></i></a>
-                    </div>
-                    <div class="product-image">
-                        <img src="img/dalgona.jpg" alt="">
-                    </div>
-                    <div class="prodact-content">
-                        <h3>Dalgona</h3>
-                        <div class="product-star">
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
+
+                <!-- Modal HTML -->
+                <div id="item-detail-modal" class="modal">
+                    <div class="modal-container">
+                        <a href=""><i data-feather="x"></i></a>
+                        <div class="modal-content">
+                            <img src="img/dalgona.jpg" alt="item" />
+                            <div class="prodact-content">
+                                <h3>Prodak 2</h3>
+                                <p>
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Incidunt, repudiandae
+                                    blanditiis qui eaque eos cupiditate totam
+                                    corrupti, sit, praesentium fugiat sed
+                                    doloremque consectetur.
+                                </p>
+                                <div class="product-star">
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                </div>
+                                <div class="product-price">IDR 32K</div>
+                                <a href="#" id="shopping-cart">
+                                    <i style="margin-right: 5px"></i>Add To Cart
+                                </a>
+                            </div>
                         </div>
-                        <div class="product-price">IDR 32K</div>
                     </div>
                 </div>
+
                 <div class="product-card">
                     <div class="product-icon">
-                        <a href=""><i data-feather="shopping-cart"></i></a>
-                        <a href=""><i data-feather="eye"></i></a>
+                        <a href="#"><i data-feather="shopping-cart"></i></a>
+                        <a href="#" class="item-detail-button"
+                            ><i data-feather="eye"></i
+                        ></a>
                     </div>
                     <div class="product-image">
-                        <img src="img/dalgona.jpg" alt="">
+                        <img src="img/dalgona.jpg" alt="" />
                     </div>
-                    <div class="prodact-content">
+                    <div class="product-content">
                         <h3>Dalgona</h3>
                         <div class="product-star">
                             <i data-feather="star" class="star"></i>
@@ -209,15 +245,48 @@
                         <div class="product-price">IDR 32K</div>
                     </div>
                 </div>
+
+                <!-- Modal HTML -->
+                <div id="item-detail-modal" class="modal">
+                    <div class="modal-container">
+                        <a href=""><i data-feather="x"></i></a>
+                        <div class="modal-content">
+                            <img src="img/dalgona.jpg" alt="item" />
+                            <div class="prodact-content">
+                                <h3>Prodak 2</h3>
+                                <p>
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Incidunt, repudiandae
+                                    blanditiis qui eaque eos cupiditate totam
+                                    corrupti, sit, praesentium fugiat sed
+                                    doloremque consectetur.
+                                </p>
+                                <div class="product-star">
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                </div>
+                                <div class="product-price">IDR 32K</div>
+                                <a href="#" id="shopping-cart">
+                                    <i style="margin-right: 5px"></i>Add To Cart
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="product-card">
                     <div class="product-icon">
-                        <a href=""><i data-feather="shopping-cart"></i></a>
-                        <a href=""><i data-feather="eye"></i></a>
+                        <a href="#"><i data-feather="shopping-cart"></i></a>
+                        <a href="#" class="item-detail-button"
+                            ><i data-feather="eye"></i
+                        ></a>
                     </div>
                     <div class="product-image">
-                        <img src="img/dalgona.jpg" alt="">
+                        <img src="img/dalgona.jpg" alt="" />
                     </div>
-                    <div class="prodact-content">
+                    <div class="product-content">
                         <h3>Dalgona</h3>
                         <div class="product-star">
                             <i data-feather="star" class="star"></i>
@@ -229,6 +298,39 @@
                         <div class="product-price">IDR 32K</div>
                     </div>
                 </div>
+
+                <!-- Modal HTML -->
+                <div id="item-detail-modal" class="modal">
+                    <div class="modal-container">
+                        <a href=""><i data-feather="x"></i></a>
+                        <div class="modal-content">
+                            <img src="img/dalgona.jpg" alt="item" />
+                            <div class="prodact-content">
+                                <h3>Prodak 2</h3>
+                                <p>
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Incidunt, repudiandae
+                                    blanditiis qui eaque eos cupiditate totam
+                                    corrupti, sit, praesentium fugiat sed
+                                    doloremque consectetur.
+                                </p>
+                                <div class="product-star">
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                    <i data-feather="star" class="star"></i>
+                                </div>
+                                <div class="product-price">IDR 32K</div>
+                                <a href="#" id="shopping-cart">
+                                    <i style="margin-right: 5px"></i>Add To Cart
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal HTML -->
             </div>
         </section>
 
@@ -244,9 +346,8 @@
                         referrerpolicy="no-referrer-when-downgrade"
                         class="maps"
                     ></iframe>
-
                     <form action="">
-                        <h2 style="color: #333333;">CONTACT ME<h2>
+                        <h2 style="color: #333333">CONTACT ME</h2>
                         <div class="input-group">
                             <i data-feather="user" style="color: #333333"></i>
                             <input type="text" placeholder="Your Name" />
@@ -291,7 +392,6 @@
                 <p>Created by <a href="">mrupyagung</a>.| &copy; 2024</p>
             </div>
         </footer>
-
         <script>
             feather.replace();
         </script>
