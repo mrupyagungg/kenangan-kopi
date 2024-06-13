@@ -205,29 +205,76 @@
                 nemo reprehenderit praesentium assumenda eius vero unde, maxime
                 at voluptatibus sed iure? Libero, expedita porro!
             </p>
-            <div class="row">
-                <!-- Example product card with item-detail-button -->
-                <div class="product-card">
-                    <div class="product-icon">
-                        <a href="#"><i data-feather="shopping-cart"></i></a>
-                        <a href="#" class="item-detail-button"
-                            ><i data-feather="eye"></i
-                        ></a>
-                    </div>
-                    <div class="product-image">
-                        <img src="img/dalgona.jpg" alt="" />
-                    </div>
-                    <div class="product-content">
-                        <h3>Dalgona</h3>
-                        <div class="product-star">
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
-                            <i data-feather="star" class="star"></i>
+            <div class="product" x-data="product">
+                <div class="row">
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="product-card">
+                            <div class="product-icon">
+                                <a href="#">
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <use
+                                            href="img/feather-sprite.svg#shopping-cart"
+                                        />
+                                    </svg>
+                                </a>
+                                <a href="#" class="item-detail-button">
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <use
+                                            href="img/feather-sprite.svg#eye"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="product-image">
+                                <img
+                                    :src="`img/product/${item.img}`"
+                                    :alt="item.name"
+                                />
+                            </div>
+                            <div class="product-content">
+                                <h3 x-text="item.name"></h3>
+                                <div class="product-star">
+                                    <template x-for="star in 5">
+                                        <div class="star">
+                                            <svg
+                                                width="24"
+                                                height="24"
+                                                fill="currentColor"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <use
+                                                    href="img/feather-sprite.svg#star"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div
+                                    class="product-price"
+                                    x-text="`IDR ${item.price}`"
+                                ></div>
+                            </div>
                         </div>
-                        <div class="product-price">IDR 32K</div>
-                    </div>
+                    </template>
                 </div>
             </div>
         </section>
