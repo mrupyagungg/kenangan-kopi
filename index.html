@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Kedai KOpi</title>
+        <title>Kedai Kopi</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
 
@@ -26,6 +26,8 @@
                 <a href="#home">HOME</a>
                 <a href="#about">ABOUT</a>
                 <a href="#menu">MENU</a>
+                <a href="#contact">BERITA</a>
+                <a href="#contact">MEMBER</a>
                 <a href="#contact">CONTACT</a>
             </div>
             <div class="navbar-extra">
@@ -85,13 +87,23 @@
         <!-- hero section -->
         <section class="hero" id="home">
             <main class="content">
-                <h1>Dengan Kopi Kita bisa <span>Santai</span></h1>
+                <h1>Dengan Kopi Kita bisa, <br /><span id="text"></span></h1>
                 <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Fugiat, iste.
                 </p>
-                <a href="#" class="cta">Buy Now</a>
+                <a href="#menu" class="cta">Buy Now</a>
             </main>
+            <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+            <script>
+                var typed = new Typed('#text', {
+                    strings: ['Santai', 'Ngobrol', 'Curhat'],
+                    typeSpeed: 100,
+                    backSpeed: 55,
+                    backDelay: 1000,
+                    loop: true,
+                });
+            </script>
         </section>
 
         <!-- about -->
@@ -131,7 +143,7 @@
             </p>
             <div class="row">
                 <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
+                    <img src="img/dalgona.jpg" alt="dalgona" />
                     <h3 class="menu-card-tittle">Espresso</h3>
                     <p class="menu-card-price">IDR <span>15000</span></p>
                 </div>
@@ -206,7 +218,7 @@
                             <i data-feather="star" class="star"></i>
                             <i data-feather="star" class="star"></i>
                             <i data-feather="star" class="star"></i>
-                            <i data-feather="star"></i>
+                            <i data-feather="star" class="star"></i>
                         </div>
                         <div class="product-price">IDR 32K</div>
                     </div>
@@ -219,13 +231,14 @@
                         <div class="modal-content">
                             <img src="img/dalgona.jpg" alt="item" />
                             <div class="prodact-content">
-                                <h3>Prodak 2</h3>
+                                <h3>Dalgona</h3>
                                 <p>
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Incidunt, repudiandae
-                                    blanditiis qui eaque eos cupiditate totam
-                                    corrupti, sit, praesentium fugiat sed
-                                    doloremque consectetur.
+                                    Dalgona Coffee is a whipped coffee drink
+                                    that became an internet sensation during the
+                                    COVID-19 pandemic. Named after a traditional
+                                    Korean honeycomb toffee, this frothy drink
+                                    is known for its Instagram-worthy appearance
+                                    and delightful taste.
                                 </p>
                                 <div class="product-star">
                                     <i data-feather="star" class="star"></i>
