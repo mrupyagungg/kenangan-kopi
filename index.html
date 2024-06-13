@@ -198,14 +198,15 @@
 
         <!-- product -->
         <section class="product" id="product">
-            <h2><span>Prodak</span> Unggluan Kami</h2>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Similique numquam, architecto, ipsa dignissimos aliquam magni
-                nemo reprehenderit praesentium assumenda eius vero unde, maxime
-                at voluptatibus sed iure? Libero, expedita porro!
-            </p>
             <div class="product" x-data="product">
+                <h2><span>Prodak</span> Unggluan Kami</h2>
+                <p>
+                    Reprehenderit aliquid voluptatum cupiditate, quibusdam et
+                    possimus architecto ab odio, ad nesciunt delectus
+                    voluptatibus sunt temporibus excepturi ex. Ab rem quos dicta
+                    ut fugiat? Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Veritatis, quidem.
+                </p>
                 <div class="row">
                     <template x-for="(item, index) in items" :key="index">
                         <div class="product-card">
@@ -268,10 +269,9 @@
                                         </div>
                                     </template>
                                 </div>
-                                <div
-                                    class="product-price"
-                                    x-text="`IDR ${item.price}`"
-                                ></div>
+                                <div class="product-price">
+                                    <span x-text="rupiah(item.price)"></span>
+                                </div>
                             </div>
                         </div>
                     </template>
