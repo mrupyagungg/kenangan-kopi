@@ -9,6 +9,17 @@ document.addEventListener('alpine:init', () => {
             { id: 5, name: 'Machiato', img: '6.jpg', price: '24000' },
         ],
     }));
+    Alpine.store('cart', {
+        items: [],
+        total: 0,
+        quantity: 0,
+        add(newItem) {
+            this.items.push(newItem);
+            this.total += newItem.price;
+            this.quantity++;
+            console.log('thisTotal');
+        },
+    });
 });
 
 // Initialize Feather icons

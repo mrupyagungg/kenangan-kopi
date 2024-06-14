@@ -13,6 +13,21 @@
     text-decoration: none;
 }
 
+/* Gaya untuk search form saat aktif */
+.search-form.active {
+    display: block; /* atau gaya lainnya sesuai kebutuhan Anda */
+}
+
+/* Gaya untuk shopping cart saat aktif */
+.shopping-cart.active {
+    display: block; /* atau gaya lainnya sesuai kebutuhan Anda */
+}
+
+/* Gaya untuk navbar saat aktif (untuk mobile menu) */
+.navbar-nav.active {
+    display: block; /* atau gaya lainnya sesuai kebutuhan Anda */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg);
@@ -130,15 +145,92 @@ body {
     width: 300px;
 }
 
+/* Shopping Cart */
+
+#shopping-cart-button {
+    position: relative;
+}
+
+#shopping-cart-button .quantity-badge {
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: red;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    right: -10px;
+    top: 0;
+    position: absolute;
+}
+
+.shopping-cart {
+    width: 400px; /* Adjust the width as needed */
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.shopping-cart .cart-items #add,
+.shopping-cart .cart-items #remove {
+    display: inline-block;
+    padding: 2px 5px;
+    cursor: pointer;
+    margin: 0 8px;
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
 .shopping-cart h2 {
     color: #000;
     font-size: 2rem;
     text-align: center;
 }
+
 .shopping-cart .card {
+    display: flex;
+    align-items: center;
     font-size: 20px;
-    color: #000; /* Pastikan teks memiliki warna yang terlihat */
-    margin-top: 10px; /* Tambahkan margin jika diperlukan */
+    color: #000;
+    margin-top: 10px;
+}
+
+.shopping-cart .card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10%;
+    margin-right: 10px;
+}
+
+.shopping-cart .item-details {
+    flex: 1;
+}
+
+.shopping-cart .item-price {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.shopping-cart .checkout-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.shopping-cart .checkout-button:hover {
+    background-color: #333;
 }
 
 .card img {
@@ -147,12 +239,6 @@ body {
     margin-right: 10px; /* Menambahkan margin kanan untuk memberikan ruang antara gambar dan teks */
 }
 
-.cart-total {
-    margin-top: 10px;
-    color: #000;
-    font-size: 1.3rem;
-    text-align: end;
-}
 .cart-items {
     list-style: none;
     padding: 0;

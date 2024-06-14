@@ -16,6 +16,7 @@
             src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
         ></script>
         <script src="src/app.js"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -26,7 +27,7 @@
 
     <body>
         <!-- navbar start -->
-        <nav class="navbar">
+        <nav class="navbar" x-data>
             <a href="#" class="navbar-logo">Kenangan <span>Kopi</span> </a>
             <div class="navbar-nav">
                 <a href="#home">HOME</a>
@@ -38,8 +39,13 @@
             </div>
             <div class="navbar-extra">
                 <a href="#" id="search-button"><i data-feather="search"></i></a>
-                <a href="#" id="shopping-cart"
-                    ><i data-feather="shopping-cart"></i
+                <a href="#" id="shopping-cart-button"
+                    ><i data-feather="shopping-cart"></i>
+                    <span
+                        x-show="$store.cart.quantity"
+                        class="quantity-badge"
+                        x-text="$store.cart.quantity"
+                    ></span
                 ></a>
                 <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
             </div>
@@ -57,35 +63,33 @@
             <!-- shopping-cart -->
             <div class="shopping-cart">
                 <h2>Your Cart</h2>
-                <ul class="cart-items">
-                    <li class="card">
-                        <img src="img/dalgona.jpg" alt="item" />
-                        <div class="item-details">
-                            <h4>Kopi Susu</h4>
-                            <p>Rp 10.000</p>
-                        </div>
-                        <button class="remove-item">
-                            <i data-feather="trash-2"></i>
-                        </button>
-                    </li>
-                </ul>
-                <hr />
-                <ul class="cart-items">
-                    <li class="card">
-                        <img src="img/dalgona.jpg" alt="item" />
-                        <div class="item-details">
-                            <h4>Kopi Susu</h4>
-                            <p>Rp 10.000</p>
-                        </div>
-                        <button class="remove-item">
-                            <i data-feather="trash-2"></i>
-                        </button>
-                    </li>
-                </ul>
-                <div class="cart-total">
-                    <strong>Total:</strong> $<span id="cart-total">0.00</span>
-                </div>
-                <button class="checkout-button">Checkout</button>
+                <template
+                    x-for="(item, index) in $store.cart.items"
+                    x-keys="index"
+                >
+                    <ul class="cart-items">
+                        <li class="card">
+                            <img
+                                src="img/product/${item.img}"
+                                :alt="item.name"
+                            />
+                            <div class="item-details">
+                                <h4 x-text="item-price"></h4>
+                                <div class="item-price">
+                                    <span x-text="rupiah(item.price)"></span
+                                    >&times;
+                                    <button class="remove-item" id="remove">
+                                        &minus;
+                                    </button>
+                                    <span x-text="item.quantity"></span>
+                                    <button id="add">&plus;</button>&equals;
+                                    <span x-text="item.total"></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr />
+                </template>
             </div>
         </nav>
         <!-- navbar end -->
@@ -211,7 +215,10 @@
                     <template x-for="(item, index) in items" :key="index">
                         <div class="product-card">
                             <div class="product-icon">
-                                <a href="#">
+                                <a
+                                    href="#"
+                                    @click.prevent="$store.cart.add(item)"
+                                >
                                     <svg
                                         width="24"
                                         height="24"
@@ -251,23 +258,74 @@
                             <div class="product-content">
                                 <h3 x-text="item.name"></h3>
                                 <div class="product-star">
-                                    <template x-for="star in 5">
-                                        <div class="star">
-                                            <svg
-                                                width="24"
-                                                height="24"
-                                                fill="currentColor"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <use
-                                                    href="img/feather-sprite.svg#star"
-                                                />
-                                            </svg>
-                                        </div>
-                                    </template>
+                                    <div class="star">
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <use
+                                                href="img/feather-sprite.svg#star"
+                                            />
+                                        </svg>
+
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <use
+                                                href="img/feather-sprite.svg#star"
+                                            />
+                                        </svg>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <use
+                                                href="img/feather-sprite.svg#star"
+                                            />
+                                        </svg>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <use
+                                                href="img/feather-sprite.svg#star"
+                                            />
+                                        </svg>
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            fill="currentColor"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        >
+                                            <use
+                                                href="img/feather-sprite.svg#star"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                                 <div class="product-price">
                                     <span x-text="rupiah(item.price)"></span>

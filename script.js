@@ -1,42 +1,12 @@
-// active hamburger menu
-const navbarNav = document.querySelector('.navbar-nav');
+document.addEventListener('DOMContentLoaded', function () {
+    feather.replace();
 
-document.querySelector('#hamburger-menu').onclick = () => {
-    navbarNav.classList.toggle('active');
-};
-
-// active search
-const searchForm = document.querySelector('.search-form');
-const searchBox = document.querySelector('#search-box');
-
-document.querySelector('#search-button').onclick = (e) => {
-    e.preventDefault(); // Prevent default action to avoid unintended behaviors
-    searchForm.classList.toggle('active');
-};
-
-// hamburger menu
-const hamburger = document.querySelector('#hamburger-menu');
-
-document.addEventListener('click', function (e) {
-    if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
-        navbarNav.classList.remove('active');
-    }
-
-    if (
-        !searchForm.contains(e.target) &&
-        !document.querySelector('#search-button').contains(e.target)
-    ) {
-        searchForm.classList.remove('active');
-    }
-});
-document.addEventListener('DOMContentLoaded', () => {
     const navbarNav = document.querySelector('.navbar-nav');
     const searchForm = document.querySelector('.search-form');
-    const searchBox = document.querySelector('#search-box');
-    const hamburger = document.querySelector('#hamburger-menu');
     const searchButton = document.querySelector('#search-button');
+    const hamburger = document.querySelector('#hamburger-menu');
     const cart = document.querySelector('.shopping-cart');
-    const cartButton = document.getElementById('shopping-cart');
+    const cartButton = document.getElementById('shopping-cart-button');
     const cartItems = document.querySelector('.cart-items');
     const cartTotal = document.getElementById('cart-total');
     let total = 0;
@@ -104,51 +74,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     });
-});
 
-// Modal box
-const itemDetailModals = document.querySelectorAll('#item-detail-modal');
-const itemDetailButtons = document.querySelectorAll('.item-detail-button');
-const closeModalButtons = document.querySelectorAll('.close');
+    // Modal box functionality
+    const itemDetailModals = document.querySelectorAll('#item-detail-modal');
+    const itemDetailButtons = document.querySelectorAll('.item-detail-button');
+    const closeModalButtons = document.querySelectorAll('.close');
 
-itemDetailButtons.forEach((btn, index) => {
-    btn.onclick = (e) => {
-        // Mengubah tampilan modal yang sesuai dengan tombol ditekan menjadi 'flex'
-        itemDetailModals[index].style.display = 'flex';
-        e.preventDefault();
-    };
-});
-
-closeModalButtons.forEach((btn, index) => {
-    btn.onclick = () => {
-        // Mengubah tampilan modal yang sesuai dengan tombol close ditekan menjadi 'none'
-        itemDetailModals[index].style.display = 'none';
-    };
-});
-
-// Menambahkan event listener untuk menutup modal saat area di luar modal ditekan
-window.onclick = (event) => {
-    itemDetailModals.forEach((modal) => {
-        if (event.target === modal) {
-            // Menutup modal hanya jika yang diklik adalah area di luar modal
-            modal.style.display = 'none';
-        }
+    itemDetailButtons.forEach((btn, index) => {
+        btn.onclick = (e) => {
+            itemDetailModals[index].style.display = 'flex';
+            e.preventDefault();
+        };
     });
-};
 
-// Mendapatkan elemen tombol close
-const closeModalButton = document.querySelector('.close');
+    closeModalButtons.forEach((btn, index) => {
+        btn.onclick = () => {
+            itemDetailModals[index].style.display = 'none';
+        };
+    });
 
-// Menambahkan event listener ke tombol close
-closeModalButton.addEventListener('click', (e) => {
-    e.preventDefault(); // Mencegah navigasi ke halaman #
-    itemDetailModals.style.display = 'none'; // Menutup modal
+    window.onclick = (event) => {
+        itemDetailModals.forEach((modal) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    };
+
+    // Format currency in IDR
+    const rupiah = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+        }).format(number);
+    };
 });
-
-// Menambahkan event listener untuk menutup modal saat area di luar modal ditekan
-window.onclick = (event) => {
-    if (event.target === itemDetailModals) {
-        // Menutup modal hanya jika yang diklik adalah area di luar modal
-        itemDetailModals.style.display = 'none';
-    }
-};
