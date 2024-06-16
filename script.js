@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navbarNav = document.querySelector('.navbar-nav');
     const searchForm = document.querySelector('.search-form');
     const searchButton = document.querySelector('#search-button');
-    const hamburger = document.querySelector('#hamburger-menu');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
     const cart = document.querySelector('.shopping-cart');
     const cartButton = document.getElementById('shopping-cart-button');
     const cartItems = document.querySelector('.cart-items');
@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let total = 0;
 
     // Toggle navbar menu
-    hamburger.onclick = () => {
+    hamburgerMenu.addEventListener('click', function () {
         navbarNav.classList.toggle('active');
-    };
+    });
 
     // Toggle search form
     searchButton.onclick = (e) => {
@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
         searchForm.classList.toggle('active');
     };
 
-    // Close navbar and search form when clicking outside
     document.addEventListener('click', (e) => {
         if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
             navbarNav.classList.remove('active');

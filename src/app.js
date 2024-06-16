@@ -87,3 +87,51 @@ const rupiah = (number) => {
         minimumFractionDigits: 0,
     }).format(number);
 };
+
+// data menu
+function menuData() {
+    return {
+        menuItems: [
+            { name: 'Dalgona', image: 'img/product/1.jpg', price: 32000 },
+            { name: 'Americano', image: 'img/product/2.jpg', price: 31000 },
+            { name: 'Espresso', image: 'img/product/3.jpg', price: 20000 },
+            { name: 'Caffé Latte', image: 'img/product/4.jpg', price: 33000 },
+            { name: 'Mocca', image: 'img/product/5.jpg', price: 34000 },
+            { name: 'Machiato', image: 'img/product/6.jpg', price: 24000 },
+        ],
+    };
+}
+// Data validation
+const checkoutButton = document.querySelector('.checkout-button');
+checkoutButton.disabled = true;
+
+const form = document.querySelector('#checkoutForm');
+
+form.addEventListener('keyup', function () {
+    let allFieldsFilled = true;
+    for (let i = 0; i < form.elements.length; i++) {
+        if (
+            form.elements[i].type !== 'submit' &&
+            form.elements[i].value.length === 0
+        ) {
+            allFieldsFilled = false;
+            break;
+        }
+    }
+    if (allFieldsFilled) {
+        checkoutButton.disabled = false;
+        checkoutButton.classList.remove('disabled');
+    } else {
+        checkoutButton.disabled = true;
+        checkoutButton.classList.add('disabled');
+    }
+});
+
+// Send data when the checkout button is clicked
+checkoutButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData);
+    const objData = Object.fromEntries(data);
+    console.log(objData);
+});

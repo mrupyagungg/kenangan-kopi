@@ -168,11 +168,10 @@ body {
 }
 
 .shopping-cart {
-    width: 400px; /* Adjust the width as needed */
+    width: 500px; /* Adjust the width as needed */
     padding: 20px;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
-    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
 }
@@ -181,6 +180,7 @@ body {
 .shopping-cart .cart-items #remove {
     display: inline-block;
     padding: 2px 5px;
+    border-radius: 10%;
     cursor: pointer;
     margin: 0 8px;
     background-color: #000;
@@ -191,8 +191,13 @@ body {
 
 .shopping-cart h2 {
     color: #000;
-    font-size: 1rem;
+    font-size: 2rem;
     text-align: center;
+    padding: 1rem;
+}
+
+.shopping-cart h2 span {
+    color: var(--primary);
 }
 
 .shopping-cart .card {
@@ -218,24 +223,6 @@ body {
     display: flex;
     align-items: center;
     font-size: 1rem;
-}
-
-.shopping-cart .checkout-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.shopping-cart .checkout-button:hover {
-    background-color: #333;
 }
 
 /* form cekout */
@@ -277,10 +264,12 @@ body {
     margin-right: 10px; /* Menambahkan margin kanan untuk memberikan ruang antara gambar dan teks */
 }
 
-.cart-items {
+.cart-items,
+.shopping-cart h1 {
     list-style: none;
-    padding: 0;
-    border-bottom: 1px dashed black;
+    padding: 1rem;
+    font-size: 2rem;
+    border-bottom: 2px dashed black;
 }
 
 .cart-items li {
@@ -315,6 +304,12 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
 }
+
+.form-container .checkout-button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 /* hero secetion*/
 .hero {
     min-height: 100vh;
@@ -431,46 +426,122 @@ body {
     font-weight: 200;
     line-height: 1.6;
 }
+/* Menu CSS with Animations */
+.menu {
+    background-color: gainsboro; /* Warna latar belakang putih */
+    padding: 4rem 0; /* Padding atas dan bawah */
+    color: #000;
+}
 
-/* menu css */
-.menu h2,
-.contact h2 {
-    margin-bottom: 1.5rem;
+.menu h2 {
+    margin-bottom: 1.5rem; /* Jarak bawah judul */
+    text-align: center; /* Posisi teks menjadi tengah */
+    color: #000;
+    position: relative; /* Relatif untuk animasi */
 }
+
+.menu h2 span,
+.about h2 span {
+    display: inline-block; /* Menampilkan elemen sebagai blok inline */
+    position: relative; /* Relatif untuk animasi */
+}
+
+.about h2 span::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: #fcbf49; /* Warna garis bawah */
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out; /* Transisi lebar */
+}
+
+.menu h2 span::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary); /* Warna garis bawah */
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out; /* Transisi lebar */
+}
+
+.menu h2:hover span::after {
+    width: 100%; /* Lebar garis bawah saat hover */
+}
+
 .menu p,
-.contact p,
 .product p {
-    text-align: center;
-    max-width: 30rem;
-    margin: auto;
-    font-weight: 200;
-    line-height: 1.6rem;
+    text-align: center; /* Posisi teks menjadi tengah */
+    max-width: 30rem; /* Lebar maksimum teks */
+    margin: auto; /* Pusatkan elemen */
+    font-weight: 300; /* Ketebalan font */
+
+    line-height: 1.6rem; /* Tinggi baris */
+    transition: opacity 0.3s ease-in-out; /* Transisi opacity */
 }
+
+.menu p:hover,
+.product p:hover {
+    opacity: 0.8; /* Kurangi opacity saat hover */
+}
+
 .menu .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 5rem;
+    display: flex; /* Tampilan flex */
+    flex-wrap: wrap; /* Wrap item ke baris baru jika tidak muat */
+    justify-content: center; /* Pusatkan item secara horizontal */
+    gap: 16px; /* Jarak antar elemen */
+    color: #000;
+    margin-top: 3rem; /* Jarak atas */
 }
-.menu .row .menu-card img {
-    border-radius: 10%;
-    width: 70%;
-}
+
 .menu .row .menu-card {
-    text-align: center;
-    flex: 1 1 calc(20% - 32px); /* Dasar untuk lebar desktop */
+    text-align: center; /* Posisi teks menjadi tengah */
+    flex: 1 1 calc(20% - 32px); /* Bagian kartu mengambil 20% lebar dengan jarak sisi 16px */
     box-sizing: border-box; /* Memastikan padding dan border tidak mempengaruhi ukuran elemen */
-    padding-bottom: 2rem;
-    max-width: calc(
-        20% - 32px
-    ); /* Pastikan kartu tidak lebih besar dari yang diinginkan */
+    padding-bottom: 2rem; /* Padding bawah */
+    max-width: calc(20% - 32px); /* Lebar maksimum kartu */
+    position: relative; /* Relatif untuk animasi */
+    transition: transform 0.3s ease-in-out; /* Transisi transformasi */
 }
-.menu .row .menu-card .menu-card-tittle {
-    margin-top: 1.5rem;
+
+.menu .row .menu-card img {
+    border-radius: 10%; /* Sudut gambar */
+    width: 100%; /* Lebar gambar */
+    transition: transform 0.3s ease-in-out; /* Transisi transformasi */
 }
+
+.menu .row .menu-card:hover {
+    transform: translateY(-10px); /* Geser kartu ke atas saat hover */
+}
+
+.menu .row .menu-card:hover img {
+    transform: scale(1.05); /* Perbesar gambar saat hover */
+}
+
+.menu .menu-card h3 {
+    margin-top: 1.5rem; /* Jarak atas judul */
+    transition: color 0.3s ease-in-out; /* Transisi warna teks */
+    color: #000;
+}
+
+.menu .menu-card:hover h3 {
+    color: var(--primary); /* Warna judul saat hover */
+}
+
 .menu .row .menu-card-price {
-    margin-top: 1.5rem;
+    margin-top: 1.5rem; /* Jarak atas harga */
+    transition: color 0.3s ease-in-out; /* Transisi warna teks */
+}
+
+.menu .row .menu-card:hover .menu-card-price {
+    color: var(--primary); /* Warna harga saat hover */
 }
 
 /* product */
@@ -574,77 +645,112 @@ body {
     color: #fff;
     border-color: var(--primary);
 }
+.contact {
+    background-color: gainsboro; /* Warna latar belakang */
+    padding: 4rem 0; /* Padding atas dan bawah */
+    text-align: center; /* Posisi teks menjadi tengah */
+}
 
-/* contact */
+.contact h2 {
+    font-size: 2.5rem; /* Ukuran font besar */
+    color: #333333; /* Warna teks */
+    margin-bottom: 1rem; /* Jarak bawah */
+}
+
+.contact h2 span {
+    color: var(--primary); /* Warna teks kuning */
+}
+
+.contact .header-contact {
+    max-width: 800px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Pusatkan konten */
+}
+
+.contact .header-contact h3 {
+    font-size: 1.8rem; /* Ukuran font subjudul */
+    color: #333333; /* Warna teks */
+}
+
+.contact .header-contact p {
+    margin-top: 1rem; /* Jarak atas */
+    line-height: 1.6; /* Line-height untuk keterbacaan */
+    color: #666666; /* Warna teks abu-abu */
+}
+
 .contact .row {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 2rem;
-    background-color: #393939;
-    padding: 2rem;
-    border-radius: 10px;
-    gap: 2rem; /* Menambahkan jarak antara elemen */
+    justify-content: center; /* Pusatkan item secara horizontal */
+    gap: 2rem; /* Jarak antar elemen */
+    max-width: 1200px; /* Lebar maksimum */
+    margin: 0 auto; /* Pusatkan konten */
+    padding: 2rem; /* Padding */
+    background-color: #ffffff; /* Warna latar belakang */
+    border-radius: 10px; /* Sudut elemen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan elemen */
 }
 
-.contact .row .maps {
-    flex: 1 1 50%;
-    width: auto;
-    height: auto; /* Pastikan peta mengambil tinggi penuh */
-    object-fit: cover;
-    border-radius: 10px; /* Membuat sudut lebih halus */
+.contact .maps {
+    flex: 1 1 100%; /* Bagian peta mengambil seluruh lebar */
+    height: 400px; /* Tinggi peta */
+    border-radius: 10px; /* Sudut elemen */
 }
 
-.contact .row form {
-    flex: 1 1 45%; /* Mengubah dari 145rem ke 45% untuk ukuran lebih wajar */
-    padding: 2rem;
-    background-color: #f0f0f0; /* Warna latar belakang abu-abu */
-    border-radius: 10px; /* Membuat sudut lebih halus */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan sedikit bayangan */
+.contact form {
+    flex: 1 1 100%; /* Bagian formulir mengambil seluruh lebar */
+    max-width: 600px; /* Lebar maksimum formulir */
+    text-align: left; /* Posisi teks kiri */
 }
 
-.contact .row form .input-group {
+.contact form h2 {
+    font-size: 1.8rem; /* Ukuran font subjudul */
+    color: #333333; /* Warna teks */
+    margin-bottom: 2rem; /* Jarak bawah */
+}
+
+.contact .input-group {
     display: flex;
     align-items: center;
-    margin-top: 2rem;
-    background-color: #fff; /* Warna latar belakang input */
-    padding: 1rem 2rem;
-    border-radius: 5px; /* Membuat sudut lebih halus */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Memberikan sedikit bayangan */
+    margin-top: 1.5rem; /* Jarak atas */
+    background-color: #f0f0f0; /* Warna latar belakang input */
+    padding: 1rem 1.5rem; /* Padding */
+    border-radius: 5px; /* Sudut elemen */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan elemen */
 }
 
-.contact .row form .input-group i {
-    margin-right: 1rem;
-    color: #666; /* Warna ikon */
+.contact .input-group i {
+    margin-right: 1rem; /* Jarak kanan ikon */
+    color: #333333; /* Warna ikon */
 }
 
-.contact .row form .input-group input {
+.contact .input-group input {
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
-    color: #333; /* Warna teks */
-    padding: 0.5rem;
-    font-size: 1rem;
+    color: #333333; /* Warna teks */
+    font-size: 1rem; /* Ukuran font */
 }
 
-.contact .row form .input-group input::placeholder {
-    color: #aaa; /* Warna placeholder */
+.contact .input-group input::placeholder {
+    color: #999999; /* Warna placeholder */
 }
 
-.contact .row form .btn {
-    margin-top: 2rem;
-    padding: 1rem 2rem;
-    border: none;
-    background-color: #333; /* Warna latar belakang tombol */
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 5px; /* Membuat sudut lebih halus */
-    cursor: pointer;
-    transition: background-color 0.3s;
+.contact .btn {
+    margin-top: 2rem; /* Jarak atas */
+    padding: 1rem 2rem; /* Padding */
+    border: none; /* Tanpa border */
+    background-color: #ffc107; /* Warna latar belakang tombol */
+    color: #333333; /* Warna teks tombol */
+    font-size: 1rem; /* Ukuran font */
+    border-radius: 5px; /* Sudut elemen */
+    cursor: pointer; /* Pointer saat dihover */
+    transition: background-color 0.3s, color 0.3s; /* Transisi warna latar belakang dan teks */
 }
 
-.contact .row form .btn:hover {
-    background-color: #555; /* Warna latar belakang tombol saat hover */
+.contact .btn:hover {
+    background-color: #333333; /* Warna latar belakang tombol saat dihover */
+    color: #ffffff; /* Warna teks tombol saat dihover */
 }
 
 /* footer */

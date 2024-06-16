@@ -15,7 +15,7 @@
             defer
             src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
         ></script>
-        <script src="src/app.js"></script>
+        <script src="src/app.js" async></script>
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,20 +33,20 @@
                 <a href="#home">HOME</a>
                 <a href="#about">ABOUT</a>
                 <a href="#menu">MENU</a>
-                <a href="#contact">BERITA</a>
-                <a href="#contact">MEMBER</a>
+                <a href="#news">BERITA</a>
+                <a href="#member">MEMBER</a>
                 <a href="#contact">CONTACT</a>
             </div>
             <div class="navbar-extra">
                 <a href="#" id="search-button"><i data-feather="search"></i></a>
-                <a href="#" id="shopping-cart-button"
-                    ><i data-feather="shopping-cart"></i>
+                <a href="#" id="shopping-cart-button">
+                    <i data-feather="shopping-cart"></i>
                     <span
                         x-show="$store.cart.quantity"
                         class="quantity-badge"
                         x-text="$store.cart.quantity"
-                    ></span
-                ></a>
+                    ></span>
+                </a>
                 <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
             </div>
 
@@ -65,8 +65,10 @@
                 class="shopping-cart"
                 style="overflow-y: auto; max-height: 80vh"
             >
+                <h1 x-show="$store.cart.items.length === 0">CART</h1>
+
                 <h2 x-show="$store.cart.items.length === 0">
-                    Keranjang Kosong
+                    Your <span>cart</span> is currently <span>empty</span>.
                 </h2>
                 <template
                     x-for="(item, index) in $store.cart.items"
@@ -113,6 +115,16 @@
                 >
                     <form action="" id="checkoutForm">
                         <h5>Customer Details</h5>
+                        <input
+                            type="hidden"
+                            name="items"
+                            x-model="JSON.stringify($store.cart.items)"
+                        />
+                        <input
+                            type="hidden"
+                            name="total"
+                            x-model="$store.cart.items"
+                        />
                         <label for="name">
                             <span>Name</span>
                             <input type="text" name="name" id="name" />
@@ -132,9 +144,10 @@
                         </label>
 
                         <button
-                            class="checkout-button"
+                            class="checkout-button disabled"
                             type="submit"
                             id="checkout-button"
+                            value="checkout"
                         >
                             Checkout
                         </button>
@@ -152,7 +165,7 @@
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Fugiat, iste.
                 </p>
-                <a href="#menu" class="cta">Buy Now</a>
+                <a href="#product" class="cta">Buy Now</a>
             </main>
             <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
             <script>
@@ -201,52 +214,16 @@
                 Obcaecati velit labore dolorum, ab ad inventore praesentium
                 provident recusandae maiores officiis.
             </p>
-            <div class="row">
-                <div class="menu-card">
-                    <img src="img/dalgona.jpg" alt="dalgona" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
-                <div class="menu-card">
-                    <img src="img/kopi.jpg" alt="Espresso" />
-                    <h3 class="menu-card-tittle">Espresso</h3>
-                    <p class="menu-card-price">IDR <span>15000</span></p>
-                </div>
+            <div class="row" x-data="menuData()">
+                <template x-for="(item, index) in menuItems" :key="index">
+                    <div class="menu-card">
+                        <img :src="item.image" :alt="item.name" />
+                        <h3 class="menu-card-name" x-text="item.name"></h3>
+                        <p class="menu-card-price">
+                            IDR <span x-text="item.price"></span>
+                        </p>
+                    </div>
+                </template>
             </div>
         </section>
 
@@ -389,7 +366,14 @@
         <!-- contact -->
         <section id="contact" class="contact">
             <div class="contact">
-                <h2>Contact <span>Kami</span></h2>
+                <h2>Contact <span>US</span></h2>
+                <div class="header-contact">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Ipsa, quidem.
+                    </p>
+                    <br />
+                </div>
                 <div class="row">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.3074993642117!2d107.62910511087787!3d-6.973001668250309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9adf177bf8d%3A0x437398556f9fa03!2sUniversitas%20Telkom!5e0!3m2!1sid!2sid!4v1717853484261!5m2!1sid!2sid"
@@ -399,7 +383,7 @@
                         class="maps"
                     ></iframe>
                     <form action="">
-                        <h2 style="color: #333333">CONTACT ME</h2>
+                        <h3>Hubungi Kami</h3>
                         <div class="input-group">
                             <i data-feather="user" style="color: #333333"></i>
                             <input type="text" placeholder="Your Name" />
