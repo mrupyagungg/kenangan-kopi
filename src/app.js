@@ -1,23 +1,77 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('product', () => ({
         items: [
-            { id: 1, name: 'Dalgona', img: '1.jpg', price: '32000' },
-            { id: 2, name: 'Americano', img: '2.jpg', price: '31000' },
-            { id: 3, name: 'Espresso', img: '3.jpg', price: '20000' },
-            { id: 4, name: 'Caffé Latte', img: '4.jpg', price: '33000' },
-            { id: 5, name: 'Mocca', img: '5.jpg', price: '34000' },
-            { id: 5, name: 'Machiato', img: '6.jpg', price: '24000' },
+            { id: 1, name: 'Dalgona', img: '1.jpg', price: 32000 },
+            { id: 2, name: 'Americano', img: '2.jpg', price: 31000 },
+            { id: 3, name: 'Espresso', img: '3.jpg', price: 20000 },
+            { id: 4, name: 'Caffé Latte', img: '4.jpg', price: 33000 },
+            { id: 5, name: 'Mocca', img: '5.jpg', price: 34000 },
+            { id: 6, name: 'Machiato', img: '6.jpg', price: 24000 },
         ],
+        init() {
+            console.log('Product data initialized:', this.items);
+        },
+        rupiah(value) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+            }).format(value);
+        },
     }));
+
     Alpine.store('cart', {
         items: [],
         total: 0,
         quantity: 0,
         add(newItem) {
-            this.items.push(newItem);
-            this.total += newItem.price;
-            this.quantity++;
-            console.log('thisTotal');
+            console.log('Adding item:', newItem);
+            const cartItem = this.items.find((item) => item.id === newItem.id);
+
+            if (!cartItem) {
+                this.items.push({
+                    ...newItem,
+                    quantity: 1,
+                    total: newItem.price,
+                });
+                this.quantity++;
+                this.total += newItem.price;
+            } else {
+                this.items = this.items.map((item) => {
+                    if (item.id !== newItem.id) {
+                        return item;
+                    } else {
+                        item.quantity++;
+                        item.total += item.price;
+                        this.quantity++;
+                        this.total += item.price;
+                        return item;
+                    }
+                });
+            }
+            console.log('Cart items after adding:', this.items);
+        },
+        remove(id) {
+            console.log('Removing item with id:', id);
+            const cartItem = this.items.find((item) => item.id === id);
+
+            if (cartItem.quantity > 1) {
+                this.items = this.items.map((item) => {
+                    if (item.id !== id) {
+                        return item;
+                    } else {
+                        item.quantity--;
+                        item.total -= item.price;
+                        this.quantity--;
+                        this.total -= item.price;
+                        return item;
+                    }
+                });
+            } else if (cartItem.quantity === 1) {
+                this.items = this.items.filter((item) => item.id !== id);
+                this.quantity--;
+                this.total -= cartItem.price;
+            }
+            console.log('Cart items after removing:', this.items);
         },
     });
 });
