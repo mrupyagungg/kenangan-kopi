@@ -127,11 +127,45 @@ form.addEventListener('keyup', function () {
     }
 });
 
-// Send data when the checkout button is clicked
 checkoutButton.addEventListener('click', function (e) {
     e.preventDefault();
-    const formData = new FormData(form);
-    const data = new URLSearchParams(formData);
-    const objData = Object.fromEntries(data);
-    console.log(objData);
+
+    // Collect data from Alpine store and form
+    const data = {
+        items: JSON.stringify(Alpine.store('cart').items),
+        total: Alpine.store('cart').total,
+        name: form.elements['name'].value,
+        email: form.elements['email'].value,
+        phone: form.elements['phone'].value,
+    };
+
+    // Ensure total is a valid number
+    if (isNaN(data.total)) {
+        console.error('Total is not a number:', data.total);
+        data.total = 0;
+    }
+
+    // Format message
+    const message = formatMessage(data);
+
+    // Open WhatsApp with the formatted message
+    window.open(
+        'http://wa.me/6281904050707?text=' + encodeURIComponent(message)
+    );
 });
+
+// Function to format the WhatsApp message
+const formatMessage = (obj) => {
+    return `✨ *Data Customer* ✨
+*Name:* ${obj.name}
+*Email:* ${obj.email}
+*No HP:* ${obj.phone}
+
+📦 *Data Pesanan* 📦
+${JSON.parse(obj.items)
+    .map((item) => `- ${item.name} (${item.quantity} x ${rupiah(item.total)})`)
+    .join('\n')}
+💰 *TOTAL:* ${rupiah(obj.total)}
+
+🙏 Terima Kasih telah berbelanja dengan kami! 🙏`;
+};
