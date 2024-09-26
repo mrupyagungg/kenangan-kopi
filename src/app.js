@@ -92,12 +92,26 @@ const rupiah = (number) => {
 function menuData() {
     return {
         menuItems: [
-            { name: 'Dalgona', image: 'img/product/1.jpg', price: 32000 },
-            { name: 'Americano', image: 'img/product/2.jpg', price: 31000 },
-            { name: 'Espresso', image: 'img/product/3.jpg', price: 20000 },
-            { name: 'Caffé Latte', image: 'img/product/4.jpg', price: 33000 },
-            { name: 'Mocca', image: 'img/product/5.jpg', price: 34000 },
-            { name: 'Machiato', image: 'img/product/6.jpg', price: 24000 },
+            {
+                name: 'Coffe-Based Drink',
+                image: 'img/product/8.jpg',
+                info: 'Dari minunan tradisional berbasis espresso sampai berbagai minuman racikan kopi terkini.',
+            },
+            {
+                name: 'Non-Coffe',
+                image: 'img/product/7.jpg',
+                info: 'Kami juga memiliki menu non-coffee untuk kamu yang ingin pilihan lain selain kopi dan untuk anak - anak..',
+            },
+            {
+                name: 'Food & Snack',
+                image: 'img/product/9.jpg',
+                info: 'Berbagai macam makanan ringan sampai makanan utama siap menemani secangkir kopimu.',
+            },
+            {
+                name: 'Our Bread',
+                image: 'img/product/10.jpg',
+                info: 'Biji kopi grade Specialty Arabica dan Fine Robusta dari 9 perkebunan terbaik Indonesia.',
+            },
         ],
     };
 }
